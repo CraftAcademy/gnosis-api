@@ -8,7 +8,6 @@ RSpec.describe Api::V0::SubscriptionsController, type: :request do
   let(:university) { create(:user, role: :university) }
   let(:credentials) { university.create_new_auth_token }
   let(:headers) { { HTTP_ACCEPT: 'application/json' }.merge!(credentials) }
-  
 
   describe 'Payment posts successfully (Happy Path)' do
     
