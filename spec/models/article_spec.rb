@@ -3,6 +3,8 @@ RSpec.describe Article, type: :model do
     it { is_expected.to have_db_column :id }
     it { is_expected.to have_db_column :title }
     it { is_expected.to have_db_column :body }
+    it { is_expected.to have_db_column :city }
+    it { is_expected.to have_db_column :country }
     it { is_expected.to have_db_column :author_id }
     it { is_expected.to have_db_column :created_at }
 	end 
