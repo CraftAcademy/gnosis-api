@@ -16,7 +16,6 @@ RSpec.describe 'Registration', type: :request do
 
     it 'returns a 200 response if post request was successful' do
       expect(response.status).to eq 200
-      binding.pry
     end
 
     it 'verifies that User with Research Group role is created' do

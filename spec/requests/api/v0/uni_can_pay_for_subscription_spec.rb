@@ -52,7 +52,6 @@ RSpec.describe Api::V0::SubscriptionsController, type: :request do
       end
   
       it 'returns 402' do
-        binding.pry
         expect(response.status).to eq 402
       end
   
