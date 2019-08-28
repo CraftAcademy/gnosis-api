@@ -7,6 +7,10 @@ class Api::V0::ArticlesController < ApplicationController
     
   end
 
+  def show
+    render json: Article.find_by(city_id: params[:city])
+  end
+
   def create
     if current_user.research_group?
       Article.create(article_params.merge(author: current_user))
@@ -14,7 +18,6 @@ class Api::V0::ArticlesController < ApplicationController
     else
       render json: { error: 'Current user has no permission to create article.' }, status: 422
     end
-
   end
 
   private
