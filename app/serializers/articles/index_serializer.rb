@@ -1,5 +1,5 @@
 class Articles::IndexSerializer < ActiveModel::Serializer
-  attributes :id, :title, :body, :date, :city
+  attributes :id, :title, :body, :date, :city_id
 
   def date
     day = self.object.created_at.strftime("%d").to_i.ordinalize    

@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :article do
     title { "MyString" }
     body { "MyText" }
-    city { "Jokkmokk" }
+    city_id { "Jokkmokk" }
     association :author, factory: :user
   end
 end
