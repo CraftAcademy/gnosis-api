@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_28_174845) do
+ActiveRecord::Schema.define(version: 2019_08_29_074249) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_08_28_174845) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "author_id"
-    t.string "city_id"
+    t.string "city"
   end
 
   create_table "registration_keys", force: :cascade do |t|
@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(version: 2019_08_28_174845) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.integer "role"
-    t.bigint "university_id"
     t.boolean "subscriber", default: false
+    t.bigint "university_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
