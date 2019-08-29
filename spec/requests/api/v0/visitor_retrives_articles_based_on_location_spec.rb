@@ -7,10 +7,10 @@ RSpec.describe 'Visitor can retrieve articles based on location', type: :request
       5.times { Article.create(author: research_group, title: "yahoo", body: "this is an article", city: "Stockholm") }
       5.times { Article.create(author: research_group, title: "yahoo", body: "this is an article", city: "Barcelona") }
       articles = Article.all
-      for article1 in articles do
-        article1   
+      for x in articles do
+        x  
        end
-      article = article1
+      article = x
       get "/api/v0/articles/#{article.city}", headers: headers
     end
 
