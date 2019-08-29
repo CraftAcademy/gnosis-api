@@ -6,7 +6,7 @@ RSpec.describe 'Visitor can retrieve articles based on location', type: :request
     before do
       5.times { create(:article, author: research_group, title: "yahoo", city: "Stockholm") }
       5.times { create(:article, author: research_group, title: "yahoo", city: "Barcelona") }
-      get "/api/v0/articles/", headers: headers
+      get "/api/v0/articles?city=Stockholm", headers: headers
     end
 
     it 'returns a 200 response' do
