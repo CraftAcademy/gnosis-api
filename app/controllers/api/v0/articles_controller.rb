@@ -8,7 +8,7 @@ class Api::V0::ArticlesController < ApplicationController
   end
 
   def show
-    render json: Article.find_by(city_id: params[:city_id])
+    render json: Article.where(city: params[:city])
   end
 
   def create
