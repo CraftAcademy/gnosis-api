@@ -1,13 +1,12 @@
 RSpec.describe 'Visitor can retrieve articles based on location', type: :request do
-  let(:user) { create(:user) }
-  #  let(:credentials) { user.create_new_auth_token }
+  let(:research_group) { create(:user) }
   let(:headers) { { HTTP_ACCEPT: 'application/json' }}
 
-  describe 'registration keys are returned for subscribed user' do
+  describe 'Article based on city matched with user city are returned for user' do
     before do
-      5.times { Article.create(:user, city: "Stockholm") }
-      5.times { Article.create(:user, city: "Barcelona") }
-      get "/api/v0/articles/#{city}", headers: headers
+      5.times { create(:article, author: research_group, title: "yahoo", city: "Stockholm") }
+      5.times { create(:article, author: research_group, title: "yahoo", city: "Barcelona") }
+      get "/api/v0/articles/", headers: headers
     end
 
     it 'returns a 200 response' do
