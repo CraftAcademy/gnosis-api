@@ -1,6 +1,10 @@
 module DecodeService
   def self.attach_pdf(file, target)
-    pdf = split_base64(file)
+    if Rails.env == "test"
+      pdf = file
+    else
+      pdf = split_base64(file)
+    end
     decoded_data = Base64.decode64(pdf[:data])
     io = StringIO.new
     io.puts(decoded_data)
