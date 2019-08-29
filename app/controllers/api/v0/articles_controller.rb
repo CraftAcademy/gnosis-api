@@ -4,6 +4,11 @@ class Api::V0::ArticlesController < ApplicationController
   def index
     articles = Article.all
     render json: articles, each_serializer: Articles::IndexSerializer
+    
+  end
+
+  def show
+    render json: Article.find_by(city_id: params[:city_id])
   end
 
   def create
@@ -13,7 +18,6 @@ class Api::V0::ArticlesController < ApplicationController
     else
       render json: { error: 'Current user has no permission to create article.' }, status: 422
     end
-
   end
 
   private
