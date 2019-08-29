@@ -3,8 +3,8 @@ RSpec.describe 'University Registration', type: :request do
 
   describe 'with valid credentials for University role' do
     before 'post new University info' do
-      post '/api/v0/auth', params: { email: 'example@craftacademy.se',
-                                     name: 'Fat Bob',
+      post '/api/v0/auth', params: { email: 'harvard@harvard.edu',
+                                     name: 'Harvard',
                                      role: 'university',
                                      password: 'password',
                                      password_confirmation: 'password' },
@@ -26,7 +26,7 @@ RSpec.describe 'University Registration', type: :request do
 
   describe 'returns an error message when user submits' do
     before 'posting erroneous data to URL' do
-      post '/api/v0/auth', params: { email: 'example@craftacademy',
+      post '/api/v0/auth', params: { email: 'harvard.edu',
                                      password: 'password',
                                      password_confirmation: 'wrong_password' },
                                      headers: headers
@@ -42,14 +42,14 @@ RSpec.describe 'University Registration', type: :request do
   end
 
     it 'an already registered email' do
-      create(:user, email: 'example@craftacademy.se',
+      create(:user, email: 'harvard@harvard.edu',
                                 password: 'password',
                                 password_confirmation: 'password')
 
-    post '/api/v0/auth', params: { email: 'example@craftacademy.se',
+    post '/api/v0/auth', params: { email: 'harvard@harvard.edu',
                                    password: 'password',
-                                   password_confirmation: 'password' }, headers:
-                                   headers
+                                   password_confirmation: 'password' }, 
+                                   headers: headers
 
     expect(response_json['errors']['email']).to eq ['has already been taken']
   end

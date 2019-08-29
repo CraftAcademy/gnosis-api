@@ -2,12 +2,12 @@
 
 RSpec.describe 'User Session', type: :request do
   let(:header) { { HTTP_ACCEPT: 'application/json' } }
-  let!(:user) { create(:user, email: 'thomas@craft.se', password: 'password') }
+  let!(:user) { create(:user, email: 'reader1@mail.com', password: 'password') }
 
   describe 'POST /api/v0/auth/sign_in' do
     context 'with valid credentials' do
       before do
-        post '/api/v0/auth/sign_in', params: { email: 'thomas@craft.se',
+        post '/api/v0/auth/sign_in', params: { email: 'reader1@mail.com',
                                                password: 'password' },
                                      headers: headers
       end
@@ -17,14 +17,14 @@ RSpec.describe 'User Session', type: :request do
       end
 
       it 'returns user email' do
-        expect(response_json['data']['email']).to eq 'thomas@craft.se'
+        expect(response_json['data']['email']).to eq 'reader1@mail.com'
       end
     end
 
     context 'with invalid credentials' do
       before do
-        post '/api/v0/auth/sign_in', params: { email: 'thomas@craft.se',
-                                               password: 'wrong-password' },
+        post '/api/v0/auth/sign_in', params: { email: 'reader1@mail.com',
+                                               password: 'wrong_password' },
                                      headers: headers
       end
 

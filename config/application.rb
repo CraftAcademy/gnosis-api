@@ -27,9 +27,15 @@ module GnosisApi
       config.middleware.insert_before 0, Rack::Cors do
         allow do
           origins '*'
-          resource '*', headers: :any, methods: [:get, :post, :options]
+          resource '*', 
+            headers: :any, 
+            methods: %i[get post put delete],
+            expose: %w(access-token expiry token-type uid client)
         end
       end
     end
+
+    config.stripe.secret_key = Rails.application.credentials.stripe[:secret_key]
+    config.stripe.publishable_key = Rails.application.credentials.stripe[:publishable_key]
   end
 end

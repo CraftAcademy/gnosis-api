@@ -15,8 +15,6 @@ gem 'stripe-rails', '~> 1.8', '>= 1.8.1'
 gem 'stripe-ruby-mock', '~> 2.5', require: 'stripe_mock'
 gem 'prettier'
 
-
-
 group :development, :test do
  gem 'coveralls', require: false
  gem 'pry-rails'

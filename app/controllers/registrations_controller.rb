@@ -60,7 +60,7 @@ class RegistrationsController < ::DeviseTokenAuth::RegistrationsController
       end
 
       render_create_success
-      
+
     else
       clean_up_passwords @resource
       render_create_error
@@ -69,7 +69,7 @@ class RegistrationsController < ::DeviseTokenAuth::RegistrationsController
   end
 
   private
-  
+
   def render_create_success
     if @resource.role == 'university'  
       5.times { RegistrationKey.create(user: @resource) }

@@ -23,3 +23,13 @@
 /config/master.key
 
 coverage
+
+# Ignore vscode settings
+/.vscode/
+/.vscode/settings.json
+
+# Ignore 
+.gitignore
+
+
+

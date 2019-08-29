@@ -65,7 +65,7 @@ RSpec.describe User, type: :model do
     end
 
     describe 'User can have a University Role' do
-      let(:user) { create :user, email: 'oxford@oxford.edu', role: :university }
+      let(:user) { create :user, email: 'harvard@harvard.edu', role: :university }
 
       it '#University? responds true if user role is university' do
         expect(user.university?).to be true
@@ -74,7 +74,7 @@ RSpec.describe User, type: :model do
 
     describe 'User can have a Research Group Role' do
       let(:user) do
-        create :user, email: 'cancer_research@oxford.edu', role: :research_group
+        create :user, email: 'climate_research@harvard.edu', role: :research_group
       end
 
       it '#Research_group? responds true if user role is reseach_group' do
@@ -83,7 +83,7 @@ RSpec.describe User, type: :model do
     end
 
     describe 'Default User role is Reader' do
-      let(:user) { create :user, email: 'justsignedup@whatever.com' }
+      let(:user) { create :user, email: 'reader1@mail.com' }
 
       it '#Reader? responds true if newly created user has a default role of reader' do
         expect(user.reader?).to be true
@@ -91,7 +91,7 @@ RSpec.describe User, type: :model do
     end
 
     describe 'User can be a subscriber' do
-      let(:user) { create :user, email: 'hardknocksuniversity@ouch.edu', subscriber: true }
+      let(:user) { create :user, email: 'reader1@mail.com', subscriber: true }
 
       it '#subscriber? responds true if user is subscribed' do
         expect(user.subscriber?).to be true
@@ -99,7 +99,7 @@ RSpec.describe User, type: :model do
     end
 
     describe 'Default User subscriber status is false' do
-      let(:user) { create :user, email: 'justsignedup@whatever.com' }
+      let(:user) { create :user, email: 'reader2@mail.com' }
 
       it '#Subscriber? responds false if newly created user has a default subscriber status of false' do
         expect(user.subscriber?).to be false

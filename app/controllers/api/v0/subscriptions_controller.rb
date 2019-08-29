@@ -1,10 +1,12 @@
 class Api::V0::SubscriptionsController < ApplicationController
+  before_action :authenticate_user!
+
   def create
     if params[:stripeToken]
       begin
         customer =
           Stripe::Customer.create(
-            email: current_api_v0_user.email, source: params[:stripeToken]
+            email: current_user.email, source: params[:stripeToken]
           )
   
         charge =
@@ -16,7 +18,7 @@ class Api::V0::SubscriptionsController < ApplicationController
           )
   
         if charge.paid?
-          current_api_v0_user.update_attribute(:subscriber, true)
+          current_user.update_attribute(:subscriber, true)
           render json: { message: 'Payment successful' }
         else    
           render_error(charge.errors)
