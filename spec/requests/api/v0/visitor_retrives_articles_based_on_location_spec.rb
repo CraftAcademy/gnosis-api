@@ -1,6 +1,6 @@
 RSpec.describe 'Visitor can retrieve articles based on location', type: :request do
   let(:user) { create(:user, role: :reader) }
-  # let(:credentials) { university.create_new_auth_token }
+  #  let(:credentials) { user.create_new_auth_token }
   let(:headers) { { HTTP_ACCEPT: 'application/json' }}
 
   describe 'registration keys are returned for subscribed user' do
