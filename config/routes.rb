@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v0 do
-      resources :articles, only: [:index, :create, :show]
+      resources :articles, only: [:index, :create]
       resources :subscriptions, only: [:new, :create, :index]
       resources :users, only: [:show]
     end
