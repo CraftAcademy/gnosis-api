@@ -2,14 +2,14 @@ class Api::V0::ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:create]
   
   def index
-    articles = Article.all
-    render json: articles, each_serializer: Articles::IndexSerializer
-    
+    if params[:city]
+      articles = Article.where(city: params[:city])
+    else
+      articles = Article.all
+    end
+    render json: articles, each_serializer: Articles::IndexSerializer 
   end
 
-  def show
-    render json: Article.where.not(city: nil)
-  end
 
   def create
     if current_user.research_group?

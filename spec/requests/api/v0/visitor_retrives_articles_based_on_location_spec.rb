@@ -1,17 +1,12 @@
 RSpec.describe 'Visitor can retrieve articles based on location', type: :request do
   let(:research_group) { create(:user) }
   let(:headers) { { HTTP_ACCEPT: 'application/json' }}
-
+  let!(:stockholm_articles) { 5.times { create(:article, author: research_group, city: "Stockholm") }}
+  let!(:barcelona_articles) { 5.times { create(:article, author: research_group, city: "Barcelona") }}
+  
   describe 'Article based on city matched with user city are returned for user' do
-    before do
-      5.times { Article.create(author: research_group, title: "yahoo", body: "this is an article", city: "Stockholm") }
-      5.times { Article.create(author: research_group, title: "yahoo", body: "this is an article", city: "Barcelona") }
-      articles = Article.all
-      for x in articles do
-        x  
-       end
-      article = x
-      get "/api/v0/articles/#{article.city}", headers: headers
+    before do  
+      get "/api/v0/articles", params: {city: 'Stockholm'}, headers: headers
     end
 
     it 'returns a 200 response' do
@@ -19,7 +14,7 @@ RSpec.describe 'Visitor can retrieve articles based on location', type: :request
     end
     
     it 'returns 5 articles from Stockholm' do
-      expect(Article.where(city: "Stockholm").count).to eq 5
+      expect(response_json.size).to eq 5
     end
   end
 end
