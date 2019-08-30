@@ -14,6 +14,8 @@ gem 'devise_token_auth'
 gem 'stripe-rails', '~> 1.8', '>= 1.8.1'
 gem 'stripe-ruby-mock', '~> 2.5', require: 'stripe_mock'
 gem 'prettier'
+gem 'aws-sdk-s3'
+
 
 group :development, :test do
  gem 'coveralls', require: false
